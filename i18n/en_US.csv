@@ -1,0 +1,147 @@
+Back,Back
+"Delete Testimonial","Delete Testimonial"
+"Are you sure you want to do this?","Are you sure you want to do this?"
+Reset,Reset
+"Save and Continue Edit","Save and Continue Edit"
+"Save Testimonial","Save Testimonial"
+Breakpoint,Breakpoint
+"Slides to Show","Slides to Show"
+"Slides to Scroll","Slides to Scroll"
+Dots,Dots
+Infinite,Infinite
+"Add Row","Add Row"
+MageINIC,MageINIC
+Testimonial,Testimonial
+"You deleted the Testimonial.","You deleted the Testimonial."
+"We can't find a Testimonial to delete.","We can't find a Testimonial to delete."
+"This Testimonial no longer exists.","This Testimonial no longer exists."
+"Edit Testimonial","Edit Testimonial"
+"New Testimonial","New Testimonial"
+Testimonials,Testimonials
+"Testimonial: [%1]","Testimonial: [%1]"
+"Manage Testimonials","Manage Testimonials"
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"A total of %1 record(s) haven't been deleted. Please see server logs for more details.","A total of %1 record(s) haven't been deleted. Please see server logs for more details."
+"A total of %1 record(s) were updated.","A total of %1 record(s) were updated."
+"This testimonial no longer exists.","This testimonial no longer exists."
+"You saved the testimonial.","You saved the testimonial."
+"Something went wrong while saving the testimonial slider.","Something went wrong while saving the testimonial slider."
+"Add Testimonial","Add Testimonial"
+"provide proper Email Address.","provide proper Email Address."
+"provide proper website URL.","provide proper website URL."
+"Your Testimonial Saved.","Your Testimonial Saved."
+"Something went wrong while saving the Testimonial.","Something went wrong while saving the Testimonial."
+"Something went wrong while saving the file(s).","Something went wrong while saving the file(s)."
+"File validation failed.","File validation failed."
+"File can not be saved to the destination folder.","File can not be saved to the destination folder."
+1,1
+2,2
+3,3
+4,4
+5,5
+"Something went wrong while getting the image url.","Something went wrong while getting the image url."
+"Could not delete the Testimonial: %1","Could not delete the Testimonial: %1"
+"Testimonial with id ""%1"" does not exist.","Testimonial with id ""%1"" does not exist."
+"Please Provide Appropriate Email Address.","Please Provide Appropriate Email Address."
+"Please Provide Appropriate Website URL.","Please Provide Appropriate Website URL."
+"Something thing went wrong while saving the testimonial: %1","Something thing went wrong while saving the testimonial: %1"
+"Could not save the testimonial: %1","Could not save the testimonial: %1"
+"Incorrect CAPTCHA.","Incorrect CAPTCHA."
+Enable,Enable
+Disable,Disable
+Pending,Pending
+"All Store Views","All Store Views"
+Disabled,Disabled
+Enabled,Enabled
+Edit,Edit
+Delete,Delete
+"Are you sure, wan't to delete this record?","Are you sure, wan't to delete this record?"
+"* Required Fields","* Required Fields"
+Title,Title
+Rating,Rating
+"First Name","First Name"
+"Last Name","Last Name"
+Email,Email
+Designation,Designation
+Company,Company
+"Company's Website","Company's Website"
+website,website
+Image,Image
+"Accept Only Jpg, Png, Gif, Jpeg Format","Accept Only Jpg, Png, Gif, Jpeg Format"
+"What’s on your mind?","What’s on your mind?"
+Submit,Submit
+Cancel,Cancel
+Actions,Actions
+"You haven't added testimonial.","You haven't added testimonial."
+" There is no matching testimonial for this store."," There is no matching testimonial for this store."
+"%1 at: ","%1 at: "
+". "", """,". "", """
+"There is no matching testimonial for this store.","There is no matching testimonial for this store."
+"Delete image","Delete image"
+Configuration,Configuration
+General,General
+"Enable Testimonials","Enable Testimonials"
+"Enable Testimonial Form","Enable Testimonial Form"
+"Enable Testimonial Form,grid on Store Front","Enable Testimonial Form,grid on Store Front"
+Heading,Heading
+"Heading Of Testimonial","Heading Of Testimonial"
+"Sub Heading","Sub Heading"
+"Sub Heading Of Testimonial","Sub Heading Of Testimonial"
+"Enable Recaptcha","Enable Recaptcha"
+"Enable Slider","Enable Slider"
+"Active On HomePage","Active On HomePage"
+"Enable Slider on Home Page","Enable Slider on Home Page"
+"Enable website field","Enable website field"
+"Enable website field in testimonial form frontend","Enable website field in testimonial form frontend"
+"Slider Management","Slider Management"
+"Arrow for slider","Arrow for slider"
+"Dots for slider","Dots for slider"
+"Enable infinite looping","Enable infinite looping"
+"Autoplay Slider","Autoplay Slider"
+"Autoplay Slider speed","Autoplay Slider speed"
+"Default Slides to scroll","Default Slides to scroll"
+"Default Slicks to scroll","Default Slicks to scroll"
+"Slider speed","Slider speed"
+Breakpoints,Breakpoints
+"Design Options","Design Options"
+"Testimonial Design Preview","Testimonial Design Preview"
+"Creating Testimonial Widget","Creating Testimonial Widget"
+"Testimonial Slider Heading","Testimonial Slider Heading"
+"Testimonial slider main heading","Testimonial slider main heading"
+"Testimonial Slider Sub-Heading","Testimonial Slider Sub-Heading"
+"Testimonial slider sub-heading","Testimonial slider sub-heading"
+"Enable arrows on the Testimonial slider","Enable arrows on the Testimonial slider"
+"Enable dots on the Testimonial slider","Enable dots on the Testimonial slider"
+"Infinite looping","Infinite looping"
+"Enable infinite looping on the Testimonial slider","Enable infinite looping on the Testimonial slider"
+"Enable autoplay on the Testimonial slider","Enable autoplay on the Testimonial slider"
+"Auto speed","Auto speed"
+"Set autoplay Speed on the Testimonial slider. (Ex:2000)","Set autoplay Speed on the Testimonial slider. (Ex:2000)"
+"Default Slides to Show","Default Slides to Show"
+"Set default number of Testimonial slide to show","Set default number of Testimonial slide to show"
+"Default Slicks to Scroll","Default Slicks to Scroll"
+"Set default number of Testimonial Slick to scroll","Set default number of Testimonial Slick to scroll"
+"Set Testimonial slider speed","Set Testimonial slider speed"
+"Design Template","Design Template"
+"Select Testimonial slider template design.","Select Testimonial slider template design."
+"Default Design Template","Default Design Template"
+"First Design Template","First Design Template"
+"Second Design Template","Second Design Template"
+"Third Design Template","Third Design Template"
+"Fourth Design Template","Fourth Design Template"
+"Design Preview","Design Preview"
+"Testimonial Information","Testimonial Information"
+E-Mail,E-Mail
+"-- Please Select --","-- Please Select --"
+"Store View","Store View"
+Contents,Contents
+"Add new Testimonial","Add new Testimonial"
+Select...,Select...
+Status,Status
+"Are you sure you want to delete selected items?","Are you sure you want to delete selected items?"
+"Delete items","Delete items"
+"Change Status","Change Status"
+ID,ID
+Thumbnail,Thumbnail
+Name,Name
+

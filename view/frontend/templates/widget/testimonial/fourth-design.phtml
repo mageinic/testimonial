@@ -1,0 +1,115 @@
+<?php
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_Testimonial
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+
+use MageINIC\Testimonial\Block\Widget\Testimonial;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+
+/**
+ * Testimonial Design 4
+ *
+ * @var Testimonial $block
+ * @var Escaper $escaper
+ * @var SecureHtmlRenderer $secureRenderer
+ */
+$testimonialCollection = $block->getTestimonial();
+$design = $block->getDesignOptions();
+?>
+<?php if ($block->getEnableExtension()):?>
+    <?php if ($block->getSliderEnable() && $testimonialCollection): ?>
+        <div class="testimonial-main testimonial-type-<?= $escaper->escapeHtmlAttr($design) ?>">
+            <?php if ($block->enableHeading()): ?>
+                <div class="testimonial-heading-wrapper">
+                    <h2><?= $escaper->escapeHtml(__($block->getTestimonialHeading())) ?></h2>
+                    <p><?= $escaper->escapeHtml(__($block->getTestimonialMetaHeading())) ?></p>
+                </div>
+            <?php endif; ?>
+            <div class="testimonial-wrapper" id="testimonial-wrapper">
+                <?php foreach ($testimonialCollection as $testimonial):?>
+                    <div class="testimonial-row details-type-<?= $escaper->escapeHtmlAttr($design) ?>">
+                        <div class="content-quote-section">
+                            <div class="user-testimonial">
+                                <div class="content-testimonial">
+                                    <?= /* @noEscape */ $testimonial->getContent() ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-section">
+                            <div class="testimonial-left-section">
+                                <div class="testimonial-image-wrapper">
+                                    <img src="<?= $escaper->escapeUrl($block->getImageUrl($testimonial)) ?>"
+                                         alt="<?= $escaper->escapeHtml(__($testimonial->getFirstName())) ?>"
+                                         width="72px"/>
+                                </div>
+                                <?= /* @noEscape */ $secureRenderer->renderStyleAsTag(
+                                    'float: left;',
+                                    'div.testimonial-left-section'
+                                ) ?>
+                            </div>
+                            <?= /* @noEscape */ $secureRenderer->renderStyleAsTag(
+                                'text-align:center; padding-right: 10px;',
+                                'div.testimonial-image-wrapper'
+                            ) ?>
+                            <div class="testimonial-right-section">
+                                <div class="name-testimonial">
+                                    <span class="firstname">
+                                        <?= $escaper->escapeHtml(__($testimonial->getFirstName())) ?>
+                                    </span>
+                                    <span class="lastname">
+                                        <?= $escaper->escapeHtml(__($testimonial->getLastName())) ?>
+                                    </span>
+                                </div>
+                                <div class="designation-company">
+                                    <span class="company">
+                                        <?= $escaper->escapeHtml(__('%1 at: ', $testimonial->getDesignation())) ?>
+                                        <?php if ($block->isWebsite()): ?>
+                                            <?php $website = $testimonial->getWebsite() ?? '#' ?>
+                                            <a href="<?= $escaper->escapeUrl($website) ?>">
+                                        <?php endif; ?>
+                                            <?= $escaper->escapeHtml(__($testimonial->getCompany())) ?>
+                                        <?php if ($block->isWebsite()): ?>
+                                            </a>
+                                        <?php endif; ?>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <script type="text/x-magento-init">
+            {
+                "#testimonial-wrapper": {
+                    "testimonial-slider": <?= /* @noEscape */ $block->getJsonConfig() ?>
+                }
+            }
+        </script>
+    <?php else: ?>
+        <div class="message info empty">
+            <div><?= $escaper->escapeHtml(__(' There is no matching testimonial for this store.')) ?></div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

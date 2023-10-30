@@ -1,0 +1,154 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_Testimonial
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+-->
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="MageINIC\Testimonial\Block\Widget\Testimonial" id="testimonial-widget">
+        <label>Testimonial slider Widget</label>
+        <description translate="true">Creating Testimonial Widget</description>
+        <parameters>
+            <parameter name="enable_heading" xsi:type="select" visible="true" required="false" sort_order="5"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable Heading</label>
+                <description translate="true">Enable Heading on the Testimonial slider</description>
+            </parameter>
+            <parameter name="heading" xsi:type="text" visible="true" required="false" sort_order="10">
+                <label translate="true">Testimonial Slider Heading</label>
+                <description translate="true">Testimonial slider main heading</description>
+                <depends>
+                    <parameter name="enable_heading" value="1"/>
+                </depends>
+            </parameter>
+            <parameter name="sub_heading" xsi:type="text" visible="true" required="false" sort_order="15">
+                <label translate="true">Testimonial Slider Sub-Heading</label>
+                <description translate="true">Testimonial slider sub-heading</description>
+                <depends>
+                    <parameter name="enable_heading" value="1"/>
+                </depends>
+            </parameter>
+            <parameter name="arrow_slider" xsi:type="select" visible="true" required="false" sort_order="20"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Arrow for slider</label>
+                <description translate="true">Enable arrows on the Testimonial slider</description>
+            </parameter>
+            <parameter name="dots_slider" xsi:type="select" visible="true" required="false" sort_order="25"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Dots for slider</label>
+                <description translate="true">Enable dots on the Testimonial slider</description>
+            </parameter>
+            <parameter name="infinite_looping" xsi:type="select" visible="true" required="false" sort_order="30"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Infinite looping</label>
+                <description translate="true">Enable infinite looping on the Testimonial slider</description>
+            </parameter>
+            <parameter name="autoplay" xsi:type="select" visible="true" required="false" sort_order="35"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Autoplay Slider</label>
+                <description translate="true">Enable autoplay on the Testimonial slider</description>
+            </parameter>
+            <parameter name="autoplay_speed" xsi:type="text" visible="true" required="false" sort_order="40">
+                <label translate="true">Auto speed</label>
+                <description translate="true">Set autoplay Speed on the Testimonial slider. (Ex:2000)</description>
+                <depends>
+                    <parameter name="autoplay" value="1"/>
+                </depends>
+            </parameter>
+            <parameter name="default_slide" xsi:type="text" visible="true" required="false" sort_order="50">
+                <label translate="true">Default Slides to Show</label>
+                <description translate="true">Set default number of Testimonial slide to show</description>
+            </parameter>
+            <parameter name="default_slick" xsi:type="text" visible="true" required="false" sort_order="55">
+                <label translate="true">Default Slicks to Scroll</label>
+                <description translate="true">Set default number of Testimonial Slick to scroll</description>
+            </parameter>
+            <parameter name="slider_speed" xsi:type="text" visible="true" required="false" sort_order="60">
+                <label translate="true">Slider speed</label>
+                <description translate="true">Set Testimonial slider speed</description>
+            </parameter>
+            <parameter name="template" xsi:type="select" required="true" visible="true" sort_order="65">
+                <label translate="true">Design Template</label>
+                <description translate="true">Select Testimonial slider template design.</description>
+                <options>
+                    <option name="default_design" value="widget/testimonial/design-default.phtml" selected="true">
+                        <label translate="true">Default Design Template</label>
+                    </option>
+                    <option name="first_design" value="widget/testimonial/design-first.phtml">
+                        <label translate="true">First Design Template</label>
+                    </option>
+                    <option name="second_design"
+                            value="widget/testimonial/design-second.phtml">
+                        <label translate="true">Second Design Template</label>
+                    </option>
+                    <option name="third_design"
+                            value="widget/testimonial/design-third.phtml">
+                        <label translate="true">Third Design Template</label>
+                    </option>
+                    <option name="fourth_design"
+                            value="widget/testimonial/design-fourth.phtml">
+                        <label translate="true">Fourth Design Template</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="default_design" xsi:type="block" visible="true" required="false" sort_order="70">
+                <label translate="true">Design Preview</label>
+                <depends>
+                    <parameter name="template" value="widget/testimonial/design-default.phtml"/>
+                </depends>
+                <block class="MageINIC\Testimonial\Block\Widget\Form\DefaultDesign"/>
+            </parameter>
+            <parameter name="first_design" xsi:type="block" visible="true" required="false" sort_order="75">
+                <label translate="true">Design Preview</label>
+                <depends>
+                    <parameter name="template" value="widget/testimonial/design-first.phtml"/>
+                </depends>
+                <block class="MageINIC\Testimonial\Block\Widget\Form\FirstDesign"/>
+            </parameter>
+            <parameter name="second_design" xsi:type="block" visible="true" required="false" sort_order="80">
+                <label translate="true">Design Preview</label>
+                <depends>
+                    <parameter name="template" value="widget/testimonial/design-second.phtml"/>
+                </depends>
+                <block class="MageINIC\Testimonial\Block\Widget\Form\SecondDesign"/>
+            </parameter>
+            <parameter name="third_design" xsi:type="block" visible="true" required="false" sort_order="85">
+                <label translate="true">Design Preview</label>
+                <depends>
+                    <parameter name="template" value="widget/testimonial/design-third.phtml"/>
+                </depends>
+                <block class="MageINIC\Testimonial\Block\Widget\Form\ThirdDesign"/>
+            </parameter>
+            <parameter name="fourth_design" xsi:type="block" visible="true" required="false" sort_order="90">
+                <label translate="true">Design Preview</label>
+                <depends>
+                    <parameter name="template" value="widget/testimonial/design-fourth.phtml"/>
+                </depends>
+                <block class="MageINIC\Testimonial\Block\Widget\Form\FourthDesign"/>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
+

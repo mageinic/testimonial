@@ -1,0 +1,240 @@
+<?php
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_Testimonial
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+
+use MageINIC\Testimonial\Api\Data\TestimonialInterface;
+use MageINIC\Testimonial\Block\Form;
+use MageINIC\Testimonial\ViewModel\GeneralConfigurationData;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+
+/**
+ * Testimonial Form.
+ *
+ * @var Form $block
+ * @var Escaper $escaper
+ * @var GeneralConfigurationData $viewModelData
+ * @var SecureHtmlRenderer $secureRenderer
+ */
+$viewModelData = $block->getViewModel();
+$viewModel = $viewModelData->getHelperData();
+$model = $block->getRegistry()->registry('current_testimonial');
+
+/**
+ * @var TestimonialInterface $model
+ */
+if ($model) {
+    $title = $model->getTitle();
+    $rating = $model->getRating();
+    $designation = $model->getDesignation();
+    $company = $model->getCompany();
+    $content = $model->getContent();
+    $id = $model->getId();
+    $uploaded_file = $model->getUploadedFile();
+}
+?>
+<form class="form testimonial"
+      action="<?= $escaper->escapeUrl($block->getFormAction()) ?>"
+      id="testimonial-form"
+      method="post"
+      data-hasrequired="<?= $escaper->escapeHtml(__('* Required Fields')) ?>"
+      data-mage-init='{"validation":{}}'
+      enctype='multipart/form-data'>
+    <fieldset class="fieldset">
+        <div class="field title required">
+            <label class="label" for="name">
+                <span><?= $escaper->escapeHtml(__('Title')) ?></span>
+            </label>
+            <div class="control">
+                <input name="title" id="title" title="<?= $escaper->escapeHtmlAttr(__('Title')) ?>"
+                       class="input-text maximum-length-80"
+                       type="text" maxlength="80" data-validate="{required:true,'validate-length':true}"
+                       value="<?= $escaper->escapeHtmlAttr($title ?? '') ?>"/>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label"><?= $escaper->escapeHtml(__('Rating')) ?></label>
+            <div class="rating">
+                <?php for ($i = 5; $i >= 1; $i--): ?>
+                    <input type="radio" id="star<?= $escaper->escapeHtmlAttr($i) ?>" name="rating"
+                           value="<?= $escaper->escapeHtmlAttr($i) ?>"
+                        <?= isset($rating) ? $rating == $i ? 'checked' : '' : '' ?>/>
+                    <label class="full" for="star<?= $escaper->escapeHtmlAttr($i) ?>"></label>
+                <?php endfor; ?>
+            </div>
+        </div>
+        <div class="field first_name required">
+            <label class="label" for="firstname">
+                <span><?= $escaper->escapeHtml(__('First Name')) ?></span>
+            </label>
+            <div class="control">
+                <input name="first_name" id="firstname"
+                       title="<?= $escaper->escapeHtmlAttr(__('First Name')) ?>"
+                       value="<?= $escaper->escapeHtmlAttr($viewModel->getFirstName()) ?>"
+                       class="input-text" type="text" data-validate="{required:true}"
+                       disabled="disabled" readonly/>
+            </div>
+        </div>
+        <div class="field last_name required">
+            <label class="label" for="lastname">
+                <span><?= $escaper->escapeHtml(__('Last Name')) ?></span>
+            </label>
+            <div class="control">
+                <input name="last_name" id="lastname"
+                       title="<?= $escaper->escapeHtmlAttr(__('Last Name')) ?>"
+                       value="<?= $escaper->escapeHtmlAttr($viewModel->getLastName()) ?>"
+                       class="input-text" type="text" data-validate="{required:true}"
+                       disabled="disabled" readonly/>
+            </div>
+        </div>
+        <div class="field email required">
+            <label class="label" for="email">
+                <span><?= $escaper->escapeHtml(__('Email')) ?></span>
+            </label>
+            <div class="control">
+                <input name="email" id="email"
+                       title="<?= $escaper->escapeHtmlAttr(__('Email')) ?>"
+                       value="<?= $escaper->escapeHtmlAttr($viewModel->getUserEmail()) ?>"
+                       class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"
+                       disabled="disabled" readonly/>
+            </div>
+        </div>
+        <div class="field designation required">
+            <label class="label" for="designation">
+                <span><?= $escaper->escapeHtml(__('Designation')) ?></span>
+            </label>
+            <div class="control">
+                <input name="designation" id="designation"
+                       title="<?= $escaper->escapeHtmlAttr(__('Designation')) ?>"
+                       class="input-text maximum-length-80" maxlength="80" type="text"
+                       value="<?= /* @noEscape */ $designation ?? '' ?>"/>
+            </div>
+        </div>
+        <div class="field company required">
+            <label class="label" for="company">
+                <span><?= $escaper->escapeHtml(__('Company')) ?></span>
+            </label>
+            <div class="control">
+                <input name="company" id="company"
+                       title="<?= $escaper->escapeHtmlAttr(__('Company')) ?>"
+                       class="input-text maximum-length-80" maxlength="80" type="text"
+                       value="<?= $escaper->escapeHtmlAttr($company ?? '') ?>"/>
+            </div>
+        </div>
+        <?php if ($viewModel->isWebsite()): ?>
+            <?php $website = ($model) ? $model->getWebsite() : '' ?>
+            <div class="field website required">
+                <label class="label" for="email">
+                    <span><?= $escaper->escapeHtml(__('Company\'s Website')) ?></span>
+                </label>
+                <div class="control">
+                    <input name="website" id="website"
+                           title="<?= $escaper->escapeHtmlAttr(__('website')) ?>"
+                           class="input-text validate-url" type="text"
+                           data-validate="{required:true, 'validate-url':true}"
+                           value="<?= $escaper->escapeHtmlAttr($website) ?>"/>
+                </div>
+            </div>
+        <?php endif; ?>
+        <div class="field uploaded_file required">
+            <label class="label" for="uploaded_file">
+                <span><?= $escaper->escapeHtml(__('Image')) ?></span>
+            </label>
+            <div class="control">
+                <input name="uploaded_file"
+                    <?php if (empty($uploaded_file)): ?>
+                        data-validate="{required:true}"
+                    <?php endif; ?>
+                       id="uploaded_file"
+                       title="<?= $escaper->escapeHtmlAttr(__('Image')) ?>"
+                       class="input-text"
+                       type="file"
+                       accept=".png, .jpg, .jpeg, .gif"
+                       value="<?= /* @noEscape */ $uploaded_file ?? '' ?>"/>
+                <input type="hidden" name="old_image" id="old_image"
+                       value="<?= /* @noEscape */ $uploaded_file ?? '' ?>">
+            </div>
+            <p id="image-type-declare">
+                <?= $escaper->escapeHtml(__('Accept Only Jpg, Png, Gif, Jpeg Format')) ?>
+            </p>
+            <?= /* @noEscape */
+            $secureRenderer->renderStyleAsTag(
+                'font-size: smaller;',
+                'p#image-type-declare'
+            ) ?>
+            <?php if (isset($model)): ?>
+                <img id="imgPreview"
+                     src="<?= $escaper->escapeUrl(__($block->getImageFullPath($model))) ?>"
+                     height="100" width="100" alt=""/>
+            <?php else: ?>
+                <img id="imgPreview" src="#" height="100" width="100" alt=""/>
+                <?= /* @noEscape */
+                $secureRenderer->renderStyleAsTag(
+                    'display: none;',
+                    'img#imgPreview'
+                ) ?>
+            <?php endif; ?>
+        </div>
+        <div class="field comment required">
+            <label class="label" for="comment">
+                <span><?= $escaper->escapeHtml(__('What’s on your mind?')) ?></span>
+            </label>
+            <div class="control">
+                <textarea name="content" id="content"
+                          title="<?= $escaper->escapeHtmlAttr(__('What’s on your mind?')) ?>"
+                          class="input-text" cols="5" rows="3"
+                          data-validate="{required:true}">
+                    <?= $escaper->escapeHtml($content ?? '') ?>
+                </textarea>
+            </div>
+        </div>
+    </fieldset>
+    <?= $block->getChildHtml('form.additional.info') ?>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="testimonial_id" id="id" value="<?= /* @noEscape */ $id ?? '' ?>"/>
+            <button type="submit"
+                    title="<?= $escaper->escapeHtmlAttr(__('Submit')) ?>"
+                    class="action submit primary">
+                <span><?= $escaper->escapeHtml(__('Submit')) ?></span>
+            </button>
+        </div>
+        <div class="primary">
+            <a href="<?= $escaper->escapeUrl($block->getUrl('testimonial/testimonial/index')) ?>">
+                <button type="button"
+                        title="<?= $escaper->escapeHtmlAttr(__('Cancel')) ?>"
+                        class="action submit primary">
+                    <span><?= $escaper->escapeHtml(__('Cancel')) ?></span>
+                </button>
+            </a>
+        </div>
+    </div>
+</form>
+<script type="text/x-magento-init">
+    {
+        "#testimonial-form": {
+            "wysiwyg_editor": {}
+        }
+    }
+</script>

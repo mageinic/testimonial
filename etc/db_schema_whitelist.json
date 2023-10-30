@@ -1,0 +1,38 @@
+{
+    "mageinic_testimonial": {
+        "column": {
+            "testimonial_id": true,
+            "title": true,
+            "content": true,
+            "rating": true,
+            "first_name": true,
+            "last_name": true,
+            "email": true,
+            "designation": true,
+            "company": true,
+            "website": true,
+            "uploaded_file": true,
+            "enable": true
+        },
+        "index": {
+            "FTI_F0750490879AE046CC906C9FEDCCC9C2": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "mageinic_testimonial_store": {
+        "column": {
+            "testimonial_id": true,
+            "store_id": true
+        },
+        "index": {
+            "MAGEINIC_TESTIMONIAL_STORE_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_6DB35EBEFD1F39E0987B2900F8745E03": true,
+            "MAGEINIC_TESTIMONIAL_STORE_STORE_ID_STORE_STORE_ID": true
+        }
+    }
+}

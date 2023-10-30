@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_Testimonial
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+-->
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mageinic_testimonial" resource="default" engine="innodb" comment="MageINIC Testimonial Table">
+        <column xsi:type="int" name="testimonial_id" padding="11" unsigned="true"
+                nullable="false" identity="true" comment="Testimonial ID"/>
+        <column xsi:type="varchar" name="title" length="255" comment="Title"/>
+        <column xsi:type="text" name="content" comment="Content"/>
+        <column xsi:type="int" name="rating" padding="11" comment="Rating"/>
+        <column xsi:type="varchar" name="first_name" length="50" comment="First Name"/>
+        <column xsi:type="varchar" name="last_name" length="50" comment="Last Name"/>
+        <column xsi:type="varchar" name="email" length="70" comment="Email"/>
+        <column xsi:type="varchar" name="designation" length="50" comment="Designation"/>
+        <column xsi:type="varchar" name="company" length="255" comment="Company"/>
+        <column xsi:type="varchar" name="website" nullable="true" length="255" comment="User website"/>
+        <column xsi:type="varchar" name="uploaded_file" length="255" comment="Uploaded File"/>
+        <column xsi:type="boolean" name="enable" comment="Enable"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="testimonial_id"/>
+        </constraint>
+        <index referenceId="MAGEINIC_TESTIMONIAL_TITLE_FIRSTNAME_LASTNAME_EMAIL_DESIGNATION_COMPANY"
+               indexType="fulltext">
+            <column name="title"/>
+            <column name="first_name"/>
+            <column name="last_name"/>
+            <column name="email"/>
+            <column name="designation"/>
+            <column name="company"/>
+        </index>
+    </table>
+    <table name="mageinic_testimonial_store" resource="default" engine="innodb" comment="MageINIC Testimonial Store">
+        <column xsi:type="int" name="testimonial_id" padding="11" unsigned="true"
+                nullable="false" comment="Testimonial ID"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" comment="Store ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="testimonial_id"/>
+            <column name="store_id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+                    referenceId="MAGEINIC_TESTIMO_STORE_TESTIMO_ID_MAGEINIC_TESTIMO_TESTIMO_TESTIMO_ID"
+                    table="mageinic_testimonial_store" column="testimonial_id"
+                    referenceTable="mageinic_testimonial" referenceColumn="testimonial_id"
+                    onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="MAGEINIC_TESTIMO_STORE_STORE_ID_STORE_STORE_ID"
+                    table="mageinic_testimonial_store" column="store_id" referenceTable="store"
+                    referenceColumn="store_id" onDelete="CASCADE"/>
+        <index referenceId="MAGEINIC_TESTIMONIAL_STORE_ID" indexType="btree">
+            <column name="store_id"/>
+        </index>
+    </table>
+</schema>

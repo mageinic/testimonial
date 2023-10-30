@@ -1,0 +1,102 @@
+<?php
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_Testimonial
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+
+use MageINIC\Testimonial\Block\Grid;
+use Magento\Framework\Escaper;
+
+/**
+ * Testimonial Listing.
+ *
+ * @var Grid $block
+ * @var Escaper $escaper
+ */
+$collection = $block->getTestimonialCollection();
+$fields = ['Image','Title', 'Rating', 'Designation', 'Company', 'Action']
+?>
+<div class="actions-toolbar">
+    <div class="primary">
+        <a class="action submit primary"
+           href="<?= $escaper->escapeUrl($block->getUrl('testimonial/testimonial/form')) ?>">
+            <?= $escaper->escapeHtml(__('Add Testimonial')) ?></a>
+    </div>
+</div>
+<?php if ($collection): ?>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history" id="my-orders-table">
+            <thead>
+                <tr>
+                    <?php foreach ($fields as $field): ?>
+                        <th scope="col" class="col <?= $escaper->escapeHtmlAttr(__(strtolower($field))) ?>">
+                            <?= $escaper->escapeHtml(__($field)) ?>
+                        </th>
+                    <?php endforeach; ?>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($collection as $testimonial): ?>
+                <tr>
+                    <td data-th="<?= $escaper->escapeHtmlAttr(__('Image')) ?>" class="col title">
+                      <img src="<?= $escaper->escapeUrl($block->getImageUrl($testimonial)) ?>" width="40%" height="auto"
+                           alt="<?= $escaper->escapeHtmlAttr($testimonial->getUploadedFile()) ?>"/>
+                    </td>
+                    <td data-th="<?= $escaper->escapeHtmlAttr(__('Title')) ?>" class="col title">
+                        <?= $escaper->escapeHtml($testimonial->getTitle()) ?>
+                    </td>
+                    <td data-th="<?= $escaper->escapeHtmlAttr(__('Rating')) ?>" class="col rating">
+                        <?php $rating = $block->getRatingStartPercentage($testimonial->getRating()) ?>
+                        <div class="product-reviews-summary short">
+                            <div class="rating-summary">
+                                <div title="<?= $escaper->escapeHtmlAttr(__($rating)) ?>%" class="rating-result">
+                                    <span style="width:<?= $escaper->escapeCss(__($rating)) ?>%">
+                                        <span><?= $escaper->escapeHtml(__($rating)) ?>%</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-th="<?= $escaper->escapeHtmlAttr(__('Designation')) ?>" class="col designation">
+                        <?= $escaper->escapeHtml($testimonial->getDesignation()) ?>
+                    </td>
+                    <td data-th="<?= $escaper->escapeHtmlAttr(__('Company')) ?>" class="col company">
+                        <?= $escaper->escapeHtml($testimonial->getCompany()) ?>
+                    </td>
+                    <td data-th="<?= $escaper->escapeHtmlAttr(__('Actions')) ?>" class="col actions">
+                        <a href="<?= $escaper->escapeUrl(__($block->getEditUrl($testimonial->getId()))) ?>"
+                           class="action view">
+                            <span><?= $escaper->escapeHtml(__('Edit')) ?></span>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php else: ?>
+    <div class="message info empty">
+        <span>
+            <?= $escaper->escapeHtml(__('You haven\'t added testimonial.')) ?>
+        </span>
+    </div>
+<?php endif ?>

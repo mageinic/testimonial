@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "8ed3edf0-143e-4408-8bb1-2f041ca4c6dd",
+		"name": "Testimonials Rest Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Testimonial Get By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{magento_api_url}}/V1/testimonial/1",
+					"host": [
+						"{{magento_api_url}}"
+					],
+					"path": [
+						"V1",
+						"testimonial",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create Testimonial",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "content",
+							"type": "text"
+						},
+						{
+							"key": "rating",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "Remzy",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Parker",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ramzy.parker@mageinic.com",
+							"type": "text"
+						},
+						{
+							"key": "designation",
+							"value": "designer",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "MageINIC",
+							"type": "text"
+						},
+						{
+							"key": "website",
+							"value": "https://mageinic.com",
+							"type": "text"
+						},
+						{
+							"key": "enable",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "store_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "uploaded_file",
+							"type": "file",
+							"src": "/home/indianic/Downloads/femaleUser.png"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{magento_api_url}}/V1/create/testimonial",
+					"host": [
+						"{{magento_api_url}}"
+					],
+					"path": [
+						"V1",
+						"create",
+						"testimonial"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Testimonial",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "testimonial_id",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "website",
+							"value": "https://mageINIC.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{magento_api_url}}/V1/update/testimonial",
+					"host": [
+						"{{magento_api_url}}"
+					],
+					"path": [
+						"V1",
+						"update",
+						"testimonial"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Testimonial List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"searchCriteria\": {\n        \"filterGroups\": [\n            {\n                \"filters\": [\n                    {\n                        \"field\": \"enable\",\n                        \"value\": \"1\",\n                        \"condition_type\": \"eq\"\n                    }\n                ]\n            },\n            {\n                \"filters\": [\n                    {\n                        \"field\": \"store_id\",\n                        \"value\": \"1\",\n                        \"condition_type\": \"in\"\n                    }\n                ]\n            }\n        ],\n        \"current_page\": 1,\n        \"page_size\": 10\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{magento_api_url}}/V1/testimonial/search?searchCriteria[currentPage]=1&searchCriteria[pageSize]=10&searchCriteria[filter_groups][0][filters][0][field]=enable&searchCriteria[filter_groups][0][filters][0][value]=1&searchCriteria[filter_groups][0][filters][0][condition_type]=eq&searchCriteria[filter_groups][0][filters][1][field]=store_id&searchCriteria[filter_groups][0][filters][1][value]=1&searchCriteria[filter_groups][0][filters][1][condition_type]=in",
+					"host": [
+						"{{magento_api_url}}"
+					],
+					"path": [
+						"V1",
+						"testimonial",
+						"search"
+					],
+					"query": [
+						{
+							"key": "searchCriteria[currentPage]",
+							"value": "1"
+						},
+						{
+							"key": "searchCriteria[pageSize]",
+							"value": "10"
+						},
+						{
+							"key": "searchCriteria[filter_groups][0][filters][0][field]",
+							"value": "enable"
+						},
+						{
+							"key": "searchCriteria[filter_groups][0][filters][0][value]",
+							"value": "1"
+						},
+						{
+							"key": "searchCriteria[filter_groups][0][filters][0][condition_type]",
+							"value": "eq"
+						},
+						{
+							"key": "searchCriteria[filter_groups][0][filters][1][field]",
+							"value": "store_id"
+						},
+						{
+							"key": "searchCriteria[filter_groups][0][filters][1][value]",
+							"value": "1"
+						},
+						{
+							"key": "searchCriteria[filter_groups][0][filters][1][condition_type]",
+							"value": "in"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJraWQiOiIxIiwiYWxnIjoiSFMyNTYifQ.eyJ1aWQiOjEsInV0eXBpZCI6MiwiaWF0IjoxNjkxNTc5NzE4LCJleHAiOjE2OTE1ODMzMTh9.wxe1n9-WFZOjz_X2c-hrYAHcB21TevE0UGtDmAG6bnI",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_Testimonial
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="testimonial" translate="label" type="text" sortOrder="300" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <label>Testimonials</label>
+            <tab>mageinic</tab>
+            <resource>MageINIC_Testimonial::testimonial_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enable_frontend" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <comment>Enable Testimonials</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enable_form" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Testimonial Form</label>
+                    <comment>Enable Testimonial Form,grid on Store Front</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_frontend">1</field>
+                    </depends>
+                </field>
+                <field id="enable_heading" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Testimonial Slider Heading</label>
+                    <comment>Enable Testimonial Slider Heading on Store Front</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_frontend">1</field>
+                    </depends>
+                </field>
+                <field id="heading" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Heading</label>
+                    <comment>Heading Of Testimonial</comment>
+                    <depends>
+                        <field id="enable_frontend">1</field>
+                        <field id="enable_heading">1</field>
+                    </depends>
+                </field>
+                <field id="meta_heading" translate="label comment" type="text" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Sub Heading</label>
+                    <comment>Sub Heading Of Testimonial</comment>
+                    <depends>
+                        <field id="enable_frontend">1</field>
+                        <field id="enable_heading">1</field>
+                    </depends>
+                </field>
+                <field id="enable_recaptcha" translate="label comment" type="select" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Recaptcha</label>
+                    <comment>Enable Recaptcha</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_frontend">1</field>
+                    </depends>
+                </field>
+                <field id="enable_slider" translate="label comment" type="select" sortOrder="60" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Slider</label>
+                    <comment>Enable Slider</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_frontend">1</field>
+                    </depends>
+                </field>
+                <field id="enable_in_homepage" translate="label comment" type="select" sortOrder="70" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Active On HomePage</label>
+                    <comment>Enable Slider on Home Page</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_frontend">1</field>
+                    </depends>
+                </field>
+                <field id="enable_website" translate="label comment" type="select" sortOrder="80" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable website field</label>
+                    <comment>Enable website field in testimonial form frontend </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_frontend">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="slider" translate="label" type="text" sortOrder="2" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Slider Management</label>
+                <depends>
+                    <field id="testimonial/general/enable_frontend">1</field>
+                </depends>
+                <field id="arrow_slider" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Arrow for slider</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dots_slider" translate="label" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Dots for slider</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="infinite_looping" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable infinite looping</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="autoplay" translate="label" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Autoplay Slider</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="autoplay_speed" translate="label" type="text" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Autoplay Slider speed</label>
+                    <validate>validate-digits</validate>
+                    <depends>
+                        <field id="autoplay">1</field>
+                    </depends>
+                </field>
+                    <field id="default_slide" translate="label" type="text" sortOrder="60" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Default Slides to scroll</label>
+                    <validate>validate-digits</validate>
+                </field>
+                <field id="default_slick" translate="label" type="text" sortOrder="70" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Default Slicks to scroll</label>
+                    <validate>validate-digits</validate>
+                </field>
+                <field id="slider_speed" translate="label" type="text" sortOrder="80" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Slider speed</label>
+                    <validate>validate-digits</validate>
+                </field>
+                <field id="breakpoint_field" translate="label" sortOrder="90" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Breakpoints</label>
+                    <frontend_model>MageINIC\Testimonial\Block\System\Config\Form\DynamicRow</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                </field>
+                <field id="design_options" translate="label" type="select" sortOrder="110" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Design Options</label>
+                    <source_model>MageINIC\Testimonial\Model\Config\DesignOptions</source_model>
+                </field>
+                <field id="theme_default_design" translate="label" sortOrder="120" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Testimonial Design Preview</label>
+                    <frontend_model>MageINIC\Testimonial\Block\System\Config\Form\DefaultDesign</frontend_model>
+                    <depends>
+                        <field id="design_options">0</field>
+                    </depends>
+                </field>
+                <field id="theme_first_design" translate="label" sortOrder="130" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Testimonial Design Preview</label>
+                    <frontend_model>MageINIC\Testimonial\Block\System\Config\Form\FirstDesign</frontend_model>
+                    <depends>
+                        <field id="design_options">1</field>
+                    </depends>
+                </field>
+                <field id="theme_second_design" translate="label" sortOrder="140" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Testimonial Design Preview</label>
+                    <frontend_model>MageINIC\Testimonial\Block\System\Config\Form\SecondDesign</frontend_model>
+                    <depends>
+                        <field id="design_options">2</field>
+                    </depends>
+                </field>
+                <field id="theme_third_design" translate="label" sortOrder="150" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Testimonial Design Preview</label>
+                    <frontend_model>MageINIC\Testimonial\Block\System\Config\Form\ThirdDesign</frontend_model>
+                    <depends>
+                        <field id="design_options">3</field>
+                    </depends>
+                </field>
+                <field id="theme_fourth_design" translate="label" sortOrder="160" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Testimonial Design Preview</label>
+                    <frontend_model>MageINIC\Testimonial\Block\System\Config\Form\FourthDesign</frontend_model>
+                    <depends>
+                        <field id="design_options">4</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

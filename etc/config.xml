@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_Testimonial
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <testimonial>
+            <general>
+                <enable_frontend>0</enable_frontend>
+                <enable_heading>0</enable_heading>
+                <heading>What Our Clients Say !!</heading>
+                <meta_heading>Review from Our Happy Client</meta_heading>
+                <enable_recaptcha>0</enable_recaptcha>
+                <enable_slider>0</enable_slider>
+                <enable_website>0</enable_website>
+                <enable_in_homepage>0</enable_in_homepage>
+            </general>
+            <slider>
+                <breakpoint_field>
+                    <item1>
+                        <breakpoint>1024</breakpoint>
+                        <slides_to_show>3</slides_to_show>
+                        <slides_to_scroll>2</slides_to_scroll>
+                        <dots>true</dots>
+                        <infinite>true</infinite>
+                    </item1>
+                    <item2>
+                        <breakpoint>992</breakpoint>
+                        <slides_to_show>2</slides_to_show>
+                        <slides_to_scroll>1</slides_to_scroll>
+                        <dots>true</dots>
+                        <infinite>true</infinite>
+                    </item2>
+                    <item3>
+                        <breakpoint>480</breakpoint>
+                        <slides_to_show>1</slides_to_show>
+                        <slides_to_scroll>1</slides_to_scroll>
+                        <dots>true</dots>
+                        <infinite>true</infinite>
+                    </item3>
+                </breakpoint_field>
+                <default_slide>3</default_slide>
+                <default_slick>2</default_slick>
+                <autoplay>0</autoplay>
+                <slider_speed>400</slider_speed>
+                <infinite_looping>0</infinite_looping>
+                <dots_slider>0</dots_slider>
+                <autoplay_speed>1500</autoplay_speed>
+                <arrow_slider>0</arrow_slider>
+            </slider>
+        </testimonial>
+        <customer>
+            <captcha>
+                <shown_to_logged_in_user>
+                    <testimonial_form>1</testimonial_form>
+                </shown_to_logged_in_user>
+                <always_for>
+                    <testimonial_form>1</testimonial_form>
+                </always_for>
+            </captcha>
+        </customer>
+        <captcha translate="label">
+            <frontend>
+                <areas>
+                    <testimonial_form>
+                        <label>Testimonial Form</label>
+                    </testimonial_form>
+                </areas>
+            </frontend>
+        </captcha>
+    </default>
+</config>

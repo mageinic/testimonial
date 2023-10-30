@@ -1,0 +1,246 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_Testimonial
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+-->
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider"
+                  xsi:type="string">mageinic_testimonial_index.mageinic_testimonial_index_data_source
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add new Testimonial</label>
+            </button>
+        </buttons>
+        <spinner>mageinic_testimonial_columns</spinner>
+        <deps>
+            <dep>mageinic_testimonial_index.mageinic_testimonial_index_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="mageinic_testimonial_index_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">testimonial_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>MageINIC_Testimonial::manage_testimonial</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider"
+                      name="mageinic_testimonial_index_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>testimonial_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters">
+            <filterSelect name="store_id" provider="${ $.parentName }">
+                <settings>
+                    <caption translate="true">Select...</caption>
+                    <captionValue/>
+                    <options class="MageINIC\Testimonial\Ui\Component\Listing\Column\Options\Store"/>
+                    <label translate="true">Store View</label>
+                    <dataScope>store_id</dataScope>
+                    <imports>
+                        <link name="visible">ns = ${ $.ns }, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+            <filterSelect name="enable" provider="${ $.parentName }">
+                <settings>
+                    <caption translate="true">Select...</caption>
+                    <captionValue/>
+                    <options class="MageINIC\Testimonial\Ui\Component\Listing\Column\Options\Status"/>
+                    <label translate="true">Status</label>
+                    <dataScope>enable</dataScope>
+                    <imports>
+                        <link name="visible">ns = ${ $.ns }, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+            <filterSelect name="rating" provider="${ $.parentName }">
+                <settings>
+                    <caption translate="true">Select...</caption>
+                    <captionValue/>
+                    <options class="MageINIC\Testimonial\Model\Source\Rating"/>
+                    <label translate="true">Rating</label>
+                    <dataScope>rating</dataScope>
+                    <imports>
+                        <link name="visible">ns = ${ $.ns }, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+        </filters>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="testimonial/testimonial/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+            <action name="enable">
+                <settings>
+                    <type>enable</type>
+                    <label translate="true">Change Status</label>
+                    <actions>
+                        <action name="0">
+                            <type>enable</type>
+                            <label translate="true">Enable</label>
+                            <url path="testimonial/testimonial/massStatus">
+                                <param name="enable">1</param>
+                            </url>
+                        </action>
+                        <action name="1">
+                            <type>disable</type>
+                            <label translate="true">Disable</label>
+                            <url path="testimonial/testimonial/massStatus">
+                                <param name="enable">0</param>
+                            </url>
+                        </action>
+                    </actions>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="mageinic_testimonial_columns">
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">
+                        mageinic_testimonial_index.mageinic_testimonial_index.mageinic_testimonial_columns.actions
+                    </item>
+                    <item name="target" xsi:type="string">applyAction</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">edit</item>
+                        <item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>testimonial_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="testimonial_id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="uploaded_file" sortOrder="20"
+                component="Magento_Ui/js/grid/columns/thumbnail"
+                class="MageINIC\Testimonial\Ui\Component\Listing\Column\Thumbnail">
+            <settings>
+                <label translate="true">Thumbnail</label>
+                <hasPreview>1</hasPreview>
+                <sortable>false</sortable>
+                <altField>title</altField>
+            </settings>
+        </column>
+        <column name="title" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Title</label>
+            </settings>
+        </column>
+        <column name="name" sortOrder="40"
+                class="MageINIC\Testimonial\Ui\Component\Listing\Column\CustomerName">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+            </settings>
+        </column>
+        <column name="email" sortOrder="60">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Email</label>
+            </settings>
+        </column>
+        <column name="designation" sortOrder="80">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Designation</label>
+            </settings>
+        </column>
+        <column name="company" sortOrder="90">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Company</label>
+            </settings>
+        </column>
+        <column name="rating" sortOrder="90"
+                class="MageINIC\Testimonial\Ui\Component\Listing\Column\Ratings">
+            <settings>
+                <label translate="true">Rating</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+            </settings>
+        </column>
+        <column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store">
+            <settings>
+                <label translate="true">Store View</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+        <column name="enable" sortOrder="100"
+                class="MageINIC\Testimonial\Ui\Component\Listing\Column\Status">
+            <settings>
+                <label translate="true">Status</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+            </settings>
+        </column>
+        <actionsColumn name="actions"
+                       class="MageINIC\Testimonial\Ui\Component\Listing\Column\TestimonialActions">
+            <settings>
+                <label translate="true">Actions</label>
+                <indexField>testimonial_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

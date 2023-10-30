@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_Testimonial
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route method="POST" url="/V1/create/testimonial">
+        <service class="MageINIC\Testimonial\Api\TestimonialRepositoryInterface" method="createTestimonial"/>
+        <resources>
+            <resource ref="MageINIC_Testimonial::testimonial"/>
+        </resources>
+    </route>
+    <route method="POST" url="/V1/update/testimonial">
+        <service class="MageINIC\Testimonial\Api\TestimonialRepositoryInterface" method="updateTestimonial"/>
+        <resources>
+            <resource ref="MageINIC_Testimonial::testimonial"/>
+        </resources>
+    </route>
+    <route method="GET" url="/V1/testimonial/search">
+        <service class="MageINIC\Testimonial\Api\TestimonialRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="MageINIC_Testimonial::testimonial"/>
+        </resources>
+    </route>
+    <route method="GET" url="/V1/testimonial/:testimonialId">
+        <service class="MageINIC\Testimonial\Api\TestimonialRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="MageINIC_Testimonial::testimonial"/>
+        </resources>
+    </route>
+</routes>
