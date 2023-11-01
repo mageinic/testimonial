@@ -1,6 +1,6 @@
 {
   "name": "mageinic/testimonial",
-    "description": "The \"Testimonials Extension\" refers to a software enhancement developed by MageINIC Team, designed to facilitate the display and management of customer testimonials on websites.",
+    "description": "Testimonials Extension by MageINIC, Display dynamic testimonials in a captivating slider format, complete with star ratings for added credibility. Empower users to submit testimonials effortlessly through a user-friendly form. Seamlessly integrate with social networks, bolster security with reCAPTCHA, and enjoy widget functionality for an improved user experience.",
     "type": "magento2-module",
     "license": [
         "OSL-3.0",
