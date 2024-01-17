@@ -30,7 +30,8 @@
     <type name="MageINIC\Testimonial\Plugin\GeneralConfigurationData\SetViewModelData">
         <arguments>
             <argument name="viewModel"
-                      xsi:type="object">MageINIC\Testimonial\ViewModel\GeneralConfigurationData</argument>
+                      xsi:type="object">MageINIC\Testimonial\ViewModel\GeneralConfigurationData
+            </argument>
         </arguments>
     </type>
     <type name="MageINIC\Testimonial\Block\TestimonialHome">

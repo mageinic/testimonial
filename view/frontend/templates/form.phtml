@@ -40,7 +40,6 @@ use Magento\Framework\View\Helper\SecureHtmlRenderer;
 $viewModelData = $block->getViewModel();
 $viewModel = $viewModelData->getHelperData();
 $model = $block->getRegistry()->registry('current_testimonial');
-
 /**
  * @var TestimonialInterface $model
  */
@@ -59,7 +58,7 @@ if ($model) {
       id="testimonial-form"
       method="post"
       data-hasrequired="<?= $escaper->escapeHtml(__('* Required Fields')) ?>"
-      data-mage-init='{"validation":{}}'
+      data-mage-init='{"validation":{},"wysiwyg_editor": {}}'
       enctype='multipart/form-data'>
     <fieldset class="fieldset">
         <div class="field title required">
@@ -221,7 +220,7 @@ if ($model) {
             </button>
         </div>
         <div class="primary">
-            <a href="<?= $escaper->escapeUrl($block->getUrl('testimonial/testimonial/index')) ?>">
+            <a href="<?= $escaper->escapeUrl($block->getCancelAction()) ?>">
                 <button type="button"
                         title="<?= $escaper->escapeHtmlAttr(__('Cancel')) ?>"
                         class="action submit primary">
@@ -231,10 +230,3 @@ if ($model) {
         </div>
     </div>
 </form>
-<script type="text/x-magento-init">
-    {
-        "#testimonial-form": {
-            "wysiwyg_editor": {}
-        }
-    }
-</script>

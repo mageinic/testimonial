@@ -362,7 +362,7 @@ class Testimonial extends Template implements BlockInterface
      */
     public function getJsonConfig(): string
     {
-        $breakPoints = $this->helper->getBreakPoints();
+        $breakPoints = $this->helper->getBreakpoints();
         $config = $this->serializer->serialize($this->getSliderConfig());
         return rtrim($config, '}') . ',"responsive":' . $breakPoints . '}';
     }

@@ -161,4 +161,9 @@
             </argument>
         </arguments>
     </type>
+    <type name="MageINIC\Testimonial\Helper\Data">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
 </config>

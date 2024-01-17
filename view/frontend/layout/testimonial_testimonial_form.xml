@@ -33,7 +33,7 @@
     </head>
     <body>
         <referenceContainer name="content">
-            <block class="MageINIC\Testimonial\Block\Form" name="testimonial_form"
+            <block class="MageINIC\Testimonial\Block\Form" name="testimonial_form" cacheable="false"
                    ifconfig="testimonial/general/enable_frontend" template="MageINIC_Testimonial::form.phtml">
                 <container name="form.additional.info" label="Form Additional Info">
                     <block class="Magento\Captcha\Block\Captcha" name="captcha" after="-" cacheable="false"
@@ -51,7 +51,8 @@
                 </container>
                 <arguments>
                     <argument name="view_model"
-                              xsi:type="object">MageINIC\Testimonial\ViewModel\GeneralConfigurationData</argument>
+                              xsi:type="object">MageINIC\Testimonial\ViewModel\GeneralConfigurationData
+                    </argument>
                 </arguments>
             </block>
         </referenceContainer>

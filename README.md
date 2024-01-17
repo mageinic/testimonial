@@ -23,7 +23,7 @@ php bin/magento cache:flush
 
 ## 2. How to use
 
-- Please refer to the `Testimonial-Extension-User-Guide.pdf` file for instructions on how to use the extension.
+- Please refer to the `Testimonial Extension User Guide.pdf` file for instructions on how to use the extension.
 
 ## 3. Get Support
 

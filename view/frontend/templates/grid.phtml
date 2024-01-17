@@ -57,8 +57,9 @@ $fields = ['Image','Title', 'Rating', 'Designation', 'Company', 'Action']
             <tbody>
             <?php foreach ($collection as $testimonial): ?>
                 <tr>
-                    <td data-th="<?= $escaper->escapeHtmlAttr(__('Image')) ?>" class="col title">
-                      <img src="<?= $escaper->escapeUrl($block->getImageUrl($testimonial)) ?>" width="40%" height="auto"
+                    <td data-th="<?= $escaper->escapeHtmlAttr(__('Image')) ?>" class="col image">
+                      <img src="<?= $escaper->escapeUrl($block->getImageUrl($testimonial)) ?>"
+                           width="72px" height="auto"
                            alt="<?= $escaper->escapeHtmlAttr($testimonial->getUploadedFile()) ?>"/>
                     </td>
                     <td data-th="<?= $escaper->escapeHtmlAttr(__('Title')) ?>" class="col title">

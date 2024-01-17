@@ -50,7 +50,7 @@ interface TestimonialInterface
     /**#@-*/
 
     /**
-     * Retrieve title
+     * Receive title
      *
      * @return int|null
      */
@@ -65,7 +65,7 @@ interface TestimonialInterface
     public function setTestimonialId(int $id): TestimonialInterface;
 
     /**
-     * Retrieve title
+     * Receive title
      *
      * @return string|null
      */
@@ -80,7 +80,7 @@ interface TestimonialInterface
     public function setTitle(string $title): TestimonialInterface;
 
     /**
-     * Retrieve content
+     * Receive content
      *
      * @return string|null
      */
@@ -95,7 +95,7 @@ interface TestimonialInterface
     public function setContent(string $content): TestimonialInterface;
 
     /**
-     * Retrieve rating
+     * Receive rating
      *
      * @return string|null
      */
@@ -110,7 +110,7 @@ interface TestimonialInterface
     public function setRating(string $rating): TestimonialInterface;
 
     /**
-     * Retrieve first_name
+     * Receive first_name
      *
      * @return string|null
      */
@@ -125,7 +125,7 @@ interface TestimonialInterface
     public function setFirstName(string $firstName): TestimonialInterface;
 
     /**
-     * Retrieve last_name
+     * Receive last_name
      *
      * @return string|null
      */
@@ -140,7 +140,7 @@ interface TestimonialInterface
     public function setLastName(string $lastName): TestimonialInterface;
 
     /**
-     * Retrieve email
+     * Receive email
      *
      * @return string|null
      */
@@ -155,7 +155,7 @@ interface TestimonialInterface
     public function setEmail(string $email): TestimonialInterface;
 
     /**
-     * Retrieve designation
+     * Receive designation
      *
      * @return string|null
      */

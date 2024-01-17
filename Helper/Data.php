@@ -122,7 +122,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve username
+     * Receive username
      *
      * @return string
      */
@@ -138,7 +138,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve user email
+     * Receive user email
      *
      * @return string
      */
@@ -154,7 +154,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve user First Name
+     * Receive user First Name
      *
      * @return string
      */
@@ -170,7 +170,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve user Last Name
+     * Receive user Last Name
      *
      * @return string
      */
@@ -186,7 +186,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve value from POST by key
+     * Receive value from POST by key
      *
      * @param string $key
      * @return string
@@ -206,7 +206,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Data Persistor
+     * Receive Data Persistor
      *
      * @return DataPersistorInterface
      */
@@ -220,7 +220,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Current Store Id.
+     * Receive Current Store Id.
      *
      * @return int
      * @throws NoSuchEntityException
@@ -231,7 +231,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Name.
+     * Receive Name.
      *
      * @return string
      */
@@ -241,7 +241,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Enable Config
+     * Receive Enable Config
      *
      * @return bool
      */
@@ -254,7 +254,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Design Options config
+     * Receive Design Options config
      *
      * @return string|null
      */
@@ -280,7 +280,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Testimonial slider Heading Enable on frontend.
+     * Receive Testimonial slider Heading Enable on frontend.
      *
      * @return bool
      */
@@ -293,7 +293,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     *  Retrieve Website Field Enable on frontend form.
+     *  Receive Website Field Enable on frontend form.
      *
      * @return bool
      */
@@ -306,7 +306,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     *  Retrieve Recaptcha Enable on frontend form.
+     *  Receive Recaptcha Enable on frontend form.
      *
      * @return bool
      */
@@ -319,7 +319,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     *  Retrieve Testimonial form,grid,tab Enable on frontend.
+     *  Receive Testimonial form,grid,tab Enable on frontend.
      *
      * @return bool
      */
@@ -332,7 +332,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve SliderDot Value config
+     * Receive SliderDot Value config
      *
      * @return bool
      */
@@ -345,7 +345,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Infinite Looping config
+     * Receive Infinite Looping config
      *
      * @return bool
      */
@@ -358,7 +358,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Slider Enable
+     * Receive Slider Enable
      *
      * @return bool
      */
@@ -371,7 +371,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Slider Speed config
+     * Receive Slider Speed config
      *
      * @return int
      */
@@ -384,7 +384,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Slide To Desktop config
+     * Receive Slide To Desktop config
      *
      * @return int
      */
@@ -397,7 +397,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Slick To Desktop config
+     * Receive Slick To Desktop config
      *
      * @return int
      */
@@ -410,7 +410,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve AutoPlay Data
+     * Receive AutoPlay Data
      *
      * @return bool
      */
@@ -423,7 +423,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve AutoPlay Speed
+     * Receive AutoPlay Speed
      *
      * @return int
      */
@@ -436,7 +436,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve AutoPlay Speed
+     * Receive AutoPlay Speed
      *
      * @return bool
      */
@@ -449,7 +449,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Testimonial Heading
+     * Receive Testimonial Heading
      *
      * @return string
      */
@@ -462,7 +462,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve Testimonial Sub Heading
+     * Receive Testimonial Sub Heading
      *
      * @return string
      */
@@ -475,13 +475,23 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve AutoPlay Speed
+     * Receive Breakpoint config value
      *
      * @return string
      */
-    public function getBreakPoints(): string
+    public function getBreakpointConfig(): string
     {
-        $breakpoints = $this->scopeConfig->getValue(self::BREAKPOINT, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(self::BREAKPOINT, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
+     * Receive Slider Breakpoints.
+     *
+     * @return string
+     */
+    public function getBreakpoints(): string
+    {
+        $breakpoints = $this->getBreakpointConfig();
         $breakpoints = $this->serializer->unserialize($breakpoints);
 
         $values = [];

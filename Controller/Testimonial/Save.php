@@ -134,6 +134,9 @@ class Save extends Action implements HttpPostActionInterface
     {
         $data = $this->getRequest()->getPostValue();
         $id = $this->getRequest()->getParam('testimonial_id');
+        //$data = $this->getRequest()->getFiles()->toArray();
+//        echo "<pre>";
+//        print_r($data);die();
 
         if (empty($data['testimonial_id'])) {
             $data['testimonial_id'] = null;
@@ -148,7 +151,8 @@ class Save extends Action implements HttpPostActionInterface
 
         $files = $this->request->getFiles()->toArray();
         $imageName = $files['uploaded_file']['name'];
-        if ($imageName) {
+
+        if ($imageName === null) {
             try {
                 $this->uploadImage();
             } catch (Exception $e) {
@@ -159,7 +163,7 @@ class Save extends Action implements HttpPostActionInterface
 
         if ($this->helper->getFirstName()) {
             if (isset($data['email']) && !$this->emailAddress->isValid($data['email'])) {
-                $this->messageManager->addErrorMessage(__('provide proper Email Address.'));
+                throw $this->messageManager->addErrorMessage(__('provide proper Email Address.'));
             }
             if (isset($data['website']) && !$this->urlValidation->isValid($data['website'])) {
                 $this->messageManager->addErrorMessage(__('provide proper website URL.'));
@@ -180,7 +184,7 @@ class Save extends Action implements HttpPostActionInterface
             $this->testimonialRepository->save($model);
             $this->messageManager->addSuccessMessage(__('Your Testimonial Saved.'));
         } catch (Exception $e) {
-            $this->messageManager->addErrorMessage(__('Something went wrong while saving the Testimonial.'), $e);
+            throw $this->messageManager->addErrorMessage(__('Something went wrong while saving the Testimonial.'), $e);
         }
 
         return $this->_redirect('*/*/index');

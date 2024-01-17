@@ -38,6 +38,7 @@ use Magento\Framework\View\Element\Template\Context;
 class Form extends Template
 {
     public const SAVE_ACTION = 'testimonial/testimonial/save';
+    public const CANCEL_ACTION = 'testimonial/testimonial/index';
 
     /**
      * @var Registry
@@ -76,6 +77,16 @@ class Form extends Template
     public function getFormAction(): string
     {
         return $this->getUrl(self::SAVE_ACTION);
+    }
+
+    /**
+     * Retrieve Form Cancel Action-Url
+     *
+     * @return string
+     */
+    public function getCancelAction(): string
+    {
+        return $this->getUrl(self::CANCEL_ACTION);
     }
 
     /**

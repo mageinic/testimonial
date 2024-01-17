@@ -22,6 +22,7 @@
  * @author MageINIC <support@mageinic.com>
  */
 
-.file-uploader-area label:nth-child(3) {
+.admin__field.testimonial-profile .file-uploader-area label:nth-child(2),
+.admin__field.testimonial-profile .file-uploader-area label:nth-child(3) {
     display: none;
 }

@@ -29,12 +29,13 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="customer_account_navigation">
-            <block class="Magento\Framework\View\Element\Html\Link\Current"
-                   name="customer-account-navigation-downloadable-products-link-custom"
+            <block class="Magento\Customer\Block\Account\SortLinkInterface"
+                   name="customer-account-navigation-testimonial-link"
                    ifconfig="testimonial/general/enable_form">
                 <arguments>
                     <argument name="path" xsi:type="string">testimonial/testimonial/index</argument>
                     <argument name="label" xsi:type="string">Testimonials</argument>
+                    <argument name="sortOrder" xsi:type="number">10</argument>
                 </arguments>
             </block>
         </referenceBlock>
